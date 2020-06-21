@@ -20,7 +20,7 @@ color:#222;
 $(document).ready(function(){
     // initiate colorbox
 	$(".albumpix").colorbox({rel:'albumpix', maxWidth:'98%', maxHeight:'98%', slideshow:true, slideshowSpeed:3500, slideshowAuto:false});
-});	
+});
 </script>
 </head>
 <body>

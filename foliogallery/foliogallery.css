@@ -8,7 +8,7 @@ padding:0;
 }
 
 .fg a:link, .fg a:active, .fg a:visited {outline:0;text-decoration:none;color:#004e7b;}
-.fg a:hover {color:#a63510;} 
+.fg a:hover {color:#a63510;}
 
 .fg img {border:0;}
 .fg .clear {clear:both;}
@@ -60,7 +60,7 @@ font-size:15px;
 }
 
 .fg a.paginate,
-.fg a.current-paginate, 
+.fg a.current-paginate,
 .fg a.paginate:hover {
 display:inline-block;
 height:12px;
@@ -82,11 +82,11 @@ font-weight:bold;
 }
 
 .fg a.paginate,
-.fg a.current-paginate, 
+.fg a.current-paginate,
 .fg a.paginate:hover {padding-left:12px;font-size:14px;width:12px;height:8px;margin:2px;}
 
 .fg a.current-paginate,
-/* 
+/*
 .fg a.paginate:hover {background-position:0 -8px;}
 .fg a.next {background-position:0 -16px;}
 .fg a.prev {background-position:0 -28px;}

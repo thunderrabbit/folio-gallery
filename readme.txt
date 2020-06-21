@@ -11,21 +11,20 @@ You can also just rename the "demo.php" file and point your browser to the renam
 
 That's it!
 
-NOTE: you must set the permissions for the 'albums' folder and all its subfolders to '777'  
+NOTE: you must set the permissions for the 'albums' folder and all its subfolders to '777'
 
 
 
-This photo gallery will automatically create a thumbnail for each image as soon as you visit an album. 
+This photo gallery will automatically create a thumbnail for each image as soon as you visit an album.
 
-A random thumbnail will be displayed for each album. 
+A random thumbnail will be displayed for each album.
 
 The script will paginate the results automatically.
 
-Integrated is lightbox clone 'fancybox' from www.fancybox.net. 
+Integrated is lightbox clone 'fancybox' from www.fancybox.net.
 
 For more info please visit:
-www.FolioPages.com/php-photo-gallery 
+www.FolioPages.com/php-photo-gallery
 
 Harry G
-info@foliopages.com  
-  
+info@foliopages.com

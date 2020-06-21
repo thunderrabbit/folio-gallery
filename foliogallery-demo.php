@@ -25,7 +25,7 @@ color:#222;
 <div id="folioGallery2" class="folioGallery" title="Lake Tahoe"><div class="numPerPage" title="3"></div></div>
 
 <br />
-<br /> 
+<br />
 
 <!-- display images located in "Las Vegas Strip" subfolder and paginate in 3 item blocks -->
 <div id="folioGallery3" class="folioGallery" title="Las Vegas Strip"><div class="numPerPage" title="3"></div></div>

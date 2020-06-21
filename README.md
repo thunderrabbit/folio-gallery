@@ -14,4 +14,3 @@ I did not create this!  [See the original project from foliopages.com here](http
 When you have hundreds (or thousands) of page numbers, they would line up off the window and be unclickable.  This makes sure that does not happen anymore.
 ### Pagination
 Pages are now shown as numbers instead of circle images
-
