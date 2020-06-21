@@ -144,7 +144,10 @@ function paginate_array($numPages,$urlVars,$alb,$currentPage) {
 if (empty($_REQUEST['album'])) // if no album requested, show all albums
 {
 
-	$albums = array_diff(scandir($mainFolder), array('..', '.'));
+  // GLOB_ONLYDIR = load only the directories
+  // "basename" removes the parent dirs from the directory path
+  // /home/www/album2 ==> album2
+	$albums = array_map("basename",glob($mainFolder."/*", GLOB_ONLYDIR));
 	$numAlbums = count($albums);
 
 	if($numAlbums == 0)
