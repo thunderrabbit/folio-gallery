@@ -17,7 +17,7 @@ $sort_albums_by_date = FALSE;    // TRUE will sort albums by upload date, FALSE 
 $sort_images_by_date = TRUE;    // TRUE will sort thumbs by creation date, FALSE will sort images by name
 $random_thumbs       = TRUE;    // TRUE will display random thumbnails, FALSE will display the first image from thumbs folders
 $show_captions       = TRUE;    // TRUE will display file names as captions on thumbs inside albums, FALSE will display no captions
-$num_captions_chars  = '20';    // number of characters displayed in album and thumb captions
+$num_captions_chars  = '50';    // number of characters displayed in album and thumb captions
 /***** end gallery settings *****/
 
 $numPerPage = (!empty($_REQUEST['numperpage']) ? (int)$_REQUEST['numperpage'] : $itemsPerPage);
@@ -82,6 +82,13 @@ function make_thumb($folder,$file,$dest,$thumb_width) {
 	imagedestroy($virtual_image);
 	imagedestroy($source_image);
 
+}
+
+// I name most image files like 2020_june_jump_the_wire_shark.jpg
+function make_file_name($filename)
+{
+   $filename_no_extension = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
+   return str_replace('_', ' ', $filename_no_extension);
 }
 
 // return array sorted by date or name
@@ -204,7 +211,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 					     <img src="<?php echo $album_thumb; ?>" alt="<?php echo $albums[$i]; ?>" />
 					   </a>
 					</div>
-					<div class="caption"><?php echo substr($albums[$i],0,$num_captions_chars); ?></div>
+					<div class="caption"><?php echo substr(make_file_name($albums[$i]),0,$num_captions_chars); ?></div>
 				</div>
 
 			<?php
@@ -301,7 +308,7 @@ else //display photos in album
 								<img src="<?php echo $thumb; ?>" alt="<?php echo $files[$i]; ?>" />
 							</a>
 						</div>
-						<?php if($show_captions) { ?><div class="caption"><?php echo substr($caption,0,$num_captions_chars); ?></div><?php } ?>
+						<?php if($show_captions) { ?><div class="caption"><?php echo substr(make_file_name($caption),0,$num_captions_chars); ?></div><?php } ?>
 
 					<?php
 					}
