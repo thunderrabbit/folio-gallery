@@ -5,7 +5,9 @@
 -->
 <?php
 /***** gallery settings *****/
-$mainFolder          = 'albums'; // main folder that holds albums - this folder resides on root directory of your domain
+// Note the big difference in the two Directory variables
+$unixRootDirectory   = 'albums'; // NO trailing slash.   filesystem root directory of your domain, compared to this file
+$urlRootDirectory    = 'albums'; // location of files in URL (after domain)
 $album_page_url      = $_SERVER['PHP_SELF']; // url of page where gallery/albums are located
 $no_thumb            = 'foliogallery/noimg.png';  // show this when no thumbnail exists
 $extensions          = array("jpg","png","gif","JPG","PNG","GIF"); // allowed extensions in photo gallery
@@ -147,7 +149,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
   // GLOB_ONLYDIR = load only the directories
   // "basename" removes the parent dirs from the directory path
   // /home/www/album2 ==> album2
-	$albums = array_map("basename",glob($mainFolder."/*", GLOB_ONLYDIR));
+	$albums = array_map("basename",glob($unixRootDirectory."/*", GLOB_ONLYDIR));
 	$numAlbums = count($albums);
 
 	if($numAlbums == 0)
@@ -159,7 +161,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 	}
 	else
 	{
-		sort_array($albums,$mainFolder,$sort_albums_by_date); // rearrange array either by date or name
+		sort_array($albums,$unixRootDirectory,$sort_albums_by_date); // rearrange array either by date or name
 		$numPages = ceil( $numAlbums / $numPerPage );
 
 		if(isset($_REQUEST['p']))
@@ -185,7 +187,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 
 			if(isset($albums[$i]))
 			{
-				$thumb_pool = glob($mainFolder.'/'.$albums[$i].'/thumbs/*{.'.implode(",", $extensions).'}', GLOB_BRACE);
+				$thumb_pool = glob($unixRootDirectory.'/'.$albums[$i].'/thumbs/*{.'.implode(",", $extensions).'}', GLOB_BRACE);
 
 				if (count($thumb_pool) == 0)
 				{
@@ -227,7 +229,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 else //display photos in album
 {
 
-	$album = $mainFolder.'/'.$_REQUEST['album'];
+	$album = $unixRootDirectory.'/'.$_REQUEST['album'];
 	$files = array_diff(scandir($album), array('..', '.','thumbs'));
 	$numFiles = count($files); ?>
 
