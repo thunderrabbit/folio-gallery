@@ -230,7 +230,11 @@ else //display photos in album
 {
 
 	$album = $unixRootDirectory.'/'.$_REQUEST['album'];
-	$files = array_diff(scandir($album), array('..', '.','thumbs'));
+
+  // GLOB_BRACE = expands search to valid image extensions
+  // "basename" removes the parent dirs from the directory path
+  // /home/www/album2/monkey.jpg ==> album2/monkey.jpg
+	$files = array_map("basename",glob($unixRootDirectory.'/'.$_REQUEST['album'].'/*{.'.implode(",", $extensions).'}', GLOB_BRACE));
 	$numFiles = count($files); ?>
 
 	<div class="p10-lr">
