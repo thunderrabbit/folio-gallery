@@ -28,7 +28,7 @@ $(document).ready(function(){
 <br />
 <br />
 
-<?php $_REQUEST['fullalbum']=1; include 'foliogallery.php'; ?>
+<?php include 'foliogallery.php'; ?>
 
 <br />
 <br />
