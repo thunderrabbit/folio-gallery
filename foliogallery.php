@@ -6,8 +6,8 @@
 <?php
 /***** gallery settings *****/
 // Note the big difference in the two Directory variables
-$unixRootDirectory   = 'albums'; // NO trailing slash.   filesystem root directory of your domain, compared to this file
-$urlRootDirectory    = 'albums'; // location of files in URL (after domain)
+$unixRootDirectory   = '..'; // NO trailing slash.   filesystem root directory of your domain, compared to this file
+$urlRootDirectory    = '/'; // location of files in URL (after domain)
 $album_page_url      = $_SERVER['PHP_SELF']; // url of page where gallery/albums are located
 $no_thumb            = 'foliogallery/noimg.png';  // show this when no thumbnail exists
 $extensions          = array("jpg","png","gif","JPG","PNG","GIF"); // allowed extensions in photo gallery
