@@ -233,11 +233,16 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 	}
 
 }
-else //display photos in album
+
+if(1)  // Force the images to always be displayed, especially in the root directory.  I am leaving the { } block so I can encapsulate this later
 {
 
-	$album = $unixRootDirectory.'/'.$_REQUEST['album'];
+	$album = $unixRootDirectory;   // this works for the root directory
 
+  if(!empty($_REQUEST['album']))
+  {
+    $album .= '/'.$_REQUEST['album'];     // must not have a trailing slash on album name
+  }
   // GLOB_BRACE = expands search to valid image extensions
   // "basename" removes the parent dirs from the directory path
   // /home/www/album2/monkey.jpg ==> album2/monkey.jpg
