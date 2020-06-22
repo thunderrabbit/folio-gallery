@@ -150,13 +150,18 @@ function paginate_array($numPages,$urlVars,$alb,$currentPage) {
 <div class="fg">
 
 <?php
-if (empty($_REQUEST['album'])) // if no album requested, show all albums
+$currentDirectory = $unixRootDirectory;
+if (!empty($_REQUEST['album'])) // if no album requested, show all albums
 {
+  $currentDirectory = $unixRootDirectory . "/" . $_REQUEST['album'];
+}
 
+if(1)  // always display directories, even if in a subdirectory.  Keeping { } block so it's easier to encapsulate later
+{
   // GLOB_ONLYDIR = load only the directories
   // "basename" removes the parent dirs from the directory path
   // /home/www/album2 ==> album2
-	$albums = array_map("basename",glob($unixRootDirectory."/*", GLOB_ONLYDIR));
+	$albums = array_map("basename",glob($currentDirectory."/*", GLOB_ONLYDIR));
 	$numAlbums = count($albums);
 
 	if($numAlbums == 0)
@@ -168,7 +173,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 	}
 	else
 	{
-		sort_array($albums,$unixRootDirectory,$sort_albums_by_date); // rearrange array either by date or name
+		sort_array($albums,$currentDirectory,$sort_albums_by_date); // rearrange array either by date or name
 		$numPages = ceil( $numAlbums / $numPerPage );
 
 		if(isset($_REQUEST['p']))
@@ -194,7 +199,7 @@ if (empty($_REQUEST['album'])) // if no album requested, show all albums
 
 			if(isset($albums[$i]))
 			{
-				$thumb_pool = glob($unixRootDirectory.'/'.$albums[$i].'/thumbs/*{.'.implode(",", $extensions).'}', GLOB_BRACE);
+				$thumb_pool = glob($currentDirectory.'/'.$albums[$i].'/thumbs/*{.'.implode(",", $extensions).'}', GLOB_BRACE);
 
 				if (count($thumb_pool) == 0)
 				{
