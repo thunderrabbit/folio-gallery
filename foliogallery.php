@@ -164,7 +164,7 @@ if(1)  // always display directories, even if in a subdirectory.  Keeping { } bl
 	$albums = array_map("basename",glob($currentDirectory."/*", GLOB_ONLYDIR));
 	$numAlbums = count($albums);
 
-	if($numAlbums == 0)
+	if($numAlbums == 0)    // this should probably only be if we are in the root directory
 	{ ?>
 
 		<div class="titlebar"><p>There are currently no albums</p></div>
