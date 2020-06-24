@@ -91,6 +91,14 @@ function make_file_name($filename)
    return str_replace('_', ' ', $filename_no_extension);
 }
 
+function getNonThumbDirectoriesIn($currentDirectory)
+{
+  $directoriesInCurrentDirectory = glob($currentDirectory."/*", GLOB_ONLYDIR);
+  $basenamesOfArrayOfDirectories = array_map("basename",$directoriesInCurrentDirectory);
+  $nonThumbDirectories = array_diff($basenamesOfArrayOfDirectories, array('thumbs'));
+  return $nonThumbDirectories;
+}
+
 // return array sorted by date or name
 function sort_array(&$array,$dir,$sort_by_date) { // array argument must be passed as reference
 
@@ -164,7 +172,7 @@ if(1)  // always display directories, even if in a subdirectory.  Keeping { } bl
   // GLOB_ONLYDIR = load only the directories
   // "basename" removes the parent dirs from the directory path
   // /home/www/album2 ==> album2
-	$albums = array_map("basename",glob($currentDirectory."/*", GLOB_ONLYDIR));
+	$albums = getNonThumbDirectoriesIn($currentDirectory);
 	$numAlbums = count($albums);
 
 	if($numAlbums == 0)    // this should probably only be if we are in the root directory
