@@ -151,9 +151,12 @@ function paginate_array($numPages,$urlVars,$alb,$currentPage) {
 
 <?php
 $currentDirectory = $unixRootDirectory;
+$currentAlbumDirectory = $urlRootDirectory;
 if (!empty($_REQUEST['album'])) // if no album requested, show all albums
 {
+  // TODO clean up user input $_REQUEST['album']
   $currentDirectory = $unixRootDirectory . "/" . $_REQUEST['album'];
+  $currentAlbumDirectory = $_REQUEST['album'];
 }
 
 if(1)  // always display directories, even if in a subdirectory.  Keeping { } block so it's easier to encapsulate later
@@ -212,7 +215,7 @@ if(1)  // always display directories, even if in a subdirectory.  Keeping { } bl
 
 				<div class="thumb-wrapper">
 					<div class="thumb">
-					   <a class="showAlb" rel="<?php echo $albums[$i]; ?>" href="<?php echo $_SERVER['PHP_SELF']; ?>?album=<?php echo urlencode($albums[$i]); ?>">
+					   <a class="showAlb" rel="<?php echo $albums[$i]; ?>" href="<?php echo $_SERVER['PHP_SELF']; ?>?album=<?php echo urlencode($currentAlbumDirectory . "/" . $albums[$i]); ?>">
 					     <img src="<?php echo $album_thumb; ?>" alt="<?php echo $albums[$i]; ?>" />
 					   </a>
 					</div>
